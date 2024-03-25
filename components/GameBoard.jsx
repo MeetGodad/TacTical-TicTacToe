@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import GameResult from './GameResult';
 import { useNavigation } from '@react-navigation/native';
 import { nativeViewGestureHandlerProps } from 'react-native-gesture-handler/lib/typescript/handlers/NativeViewGestureHandler';
@@ -77,85 +78,91 @@ const GameBoard = () => {
       };
 
   return (
-    <View style={styles.gameBoard} >
+    <View style={styles.gameBoard}>
+      <ImageBackground source={require('../images/background.png')} resizeMode='cover' style={styles.backgroundImage}></ImageBackground>
       <View style={styles.container}>
-      <View style={styles.groupContainer}>
-            <View style={styles.rectangleGroup}>
-              <View style={styles.groupItem} />
-              <Text style={styles.o}>O</Text>
-            </View>
+        <View style={styles.groupContainer}>
+              <View style={styles.rectangleGroup}>
+                <View style={styles.groupItem} />
+                <Text style={styles.o}>O</Text>
+              </View>
             <Text style={styles.player1}>PLAYER 1</Text>
-      </View>
-      <View style={styles.groupContainerX}>
-            <View style={styles.rectangleGroupX}>
-              <View style={styles.groupItemX} />
-              <Text style={styles.X}>X</Text>
-            </View>
-            <Text style={styles.player2}>PLAYER 2</Text>
-      </View>
-      <Button title="BACK TO MENU"
-        radius={5}
-        iconPosition="left"
-        type="solid"
-        color="#f7b731"
-        titleStyle={styles.backToMenuBtn}
-        containerStyle={styles.backToMenuBtn1}
-        buttonStyle={styles.backToMenuBtn2}> </Button>
+        </View>
+        <View style={styles.groupContainerX}>
+              <View style={styles.rectangleGroupX}>
+                <View style={styles.groupItemX} />
+                <Text style={styles.X}>X</Text>
+              </View>
+              <Text style={styles.player2}>PLAYER 2</Text>
+        </View>
+        <Button title="BACK TO MENU"
+          radius={5}
+          iconPosition="left"
+          type="solid"
+          color="#f7b731"
+          titleStyle={styles.backToMenuBtn}
+          containerStyle={styles.backToMenuBtn1}
+          buttonStyle={styles.backToMenuBtn2}> </Button>
       
         <View style={styles.row}>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(0)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(0)}>
             <Text style={styles.text}>{board[0]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(1)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(1)}>
             <Text style={styles.text}>{board[1]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(2)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(2)}>
             <Text style={styles.text}>{board[2]}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(3)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(3)}>
             <Text style={styles.text}>{board[3]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(4)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(4)}>
             <Text style={styles.text}>{board[4]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(5)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(5)}>
             <Text style={styles.text}>{board[5]}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(6)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(6)}>
             <Text style={styles.text}>{board[6]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(7)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(7)}>
             <Text style={styles.text}>{board[7]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.cell, { backgroundColor: 'darkgray' }]} onPress={() => handleCellPress(8)}>
+          <TouchableOpacity style={[styles.cell, { backgroundColor: 'white' }]} onPress={() => handleCellPress(8)}>
             <Text style={styles.text}>{board[8]}</Text>
           </TouchableOpacity>
         </View>
-  </View>
-  </View>
+      </View>
+    </View>
   );
   };
-
-
-
-  
-
 const styles = StyleSheet.create({
 
   gameBoard: {
     position: "relative",
     borderRadius: 15,
-    backgroundColor: "#003190",
+    backgroundColor: "#001848",
     flex: 1,
     width: "100%",
     height: 823,
-    overflow: "hidden",
+    zIndex : 2,
+    
   },
 
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 389,
+    height: 823,
+    zIndex:1,
+    opacity : 0.5,
+  },
   container: { 
     flex: 1,
     backgroundColor: '#001848',
@@ -218,12 +225,13 @@ const styles = StyleSheet.create({
   },
   groupContainer: {
     position: "absolute",
-    top: 120,
-    left: 15,
+    top: 160,
+    left: 20,
     borderRadius: 15,
     backgroundColor: "#d9d9d9",
     width: 156,
     height: 166,
+    overflow:"hidden",
   },
 
   groupItemX: {
@@ -282,8 +290,8 @@ const styles = StyleSheet.create({
   },
   groupContainerX: {
     position: "absolute",
-    top: 120,
-    right: 15,
+    top: 160,
+    right: 20,
     borderRadius: 15,
     backgroundColor: "#d9d9d9",
     width: 156,
@@ -298,9 +306,9 @@ const styles = StyleSheet.create({
   },
   backToMenuBtn1: {
     right: 20,
-    left: "50%",
+    left: "41%",
     marginLeft: -0.5,
-    marginTop: -393.5,
+    marginTop: -365.5,
     top: "50%",
     position: "absolute",
   },
@@ -308,6 +316,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: 195,
     height: 41,
+    backgroundColor: "#F7B731",
   },
 
   frame6: {
@@ -327,30 +336,16 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 6,
     aspectRatio: 1.1,
-    backgroundColor : '#F9EFEF',
+    backgroundColor : '#F8EEEE',
     borderColor: '#ccc',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  cell : onPress = {
-    flex: 1,
-    margin: 6,
-    aspectRatio: 1.1,
-    backgroundColor: "#0086f4",
-    borderColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   text: {
-    fontSize: 36,
+    fontSize: 50,
     color: "#e94141",
     fontWeight: 'bold',
-  },
-  winnerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'green',
   },
 });
 
