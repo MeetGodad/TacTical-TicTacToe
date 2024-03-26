@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity , ImageBackground , Image } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import { StyleSheet } from 'react-native';
 
 const SignupPage = ({ navigation }) => {
   const [name, setName] = React.useState('');
@@ -12,8 +13,8 @@ const SignupPage = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text h4>Signup Page</Text>
+    <View style={ styles.signUp} >
+      <ImageBackground source={require('../images/background.png')} style={styles.backgroundImage}>
       <Input
         placeholder="Name"
         value={name}
@@ -35,8 +36,25 @@ const SignupPage = ({ navigation }) => {
       />
       <Button title="Sign Up" onPress={handleSignup} />
       <Button title="Already have an account? Log in" onPress={() => navigation.navigate('LoginPage')} type="clear" />
+      </ImageBackground>
     </View>
   );
 };
 
 export default SignupPage;
+
+const styles = StyleSheet.create({
+  signUp: {
+    flex: 1,
+    backgroundColor: '#001848',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  backgroundImage: {
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+});
