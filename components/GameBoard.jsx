@@ -170,8 +170,8 @@ const styles = StyleSheet.create({
 
   logo: {
     position: "absolute",
-    marginTop: 20,
-    marginLeft: 20,
+    marginTop: 11,
+    marginLeft: 12,
     top: 0,
     left: 0,
     width: 80,
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   },
   groupContainer: {
     position: "absolute",
-    top: 160,
+    top: 130,
     left: 20,
     borderRadius: 15,
     backgroundColor: "#d9d9d9",
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
   },
   groupContainerX: {
     position: "absolute",
-    top: 160,
+    top: 130,
     right: 20,
     borderRadius: 15,
     backgroundColor: "#d9d9d9",
@@ -321,11 +321,9 @@ const styles = StyleSheet.create({
     fontFamily: "Jura-Bold",
   },
   backToMenuBtn1: {
-    right: 15,
-    left: "41%",
-    marginLeft: -0.5,
+    left: "50%",
     marginTop: -365.5,
-    top: "58%",
+    top: "55%",
     position: "absolute",
   },
   backToMenuBtn2: {

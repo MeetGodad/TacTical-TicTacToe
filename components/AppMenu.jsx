@@ -18,7 +18,6 @@ export default function AppMenu ({ navigation }) {
   );
 };
 
-
 const styles = StyleSheet.create({
   appMenu: {
     backgroundColor: '#001848',
@@ -34,10 +33,10 @@ const styles = StyleSheet.create({
   },
   
   nameLogo: {
-    width: 200,
+    width: 300,
     height: 200,
     alignSelf: 'center',
-    marginBottom: 50,
+    marginTop: 50,
   },
 
   listOption: {
