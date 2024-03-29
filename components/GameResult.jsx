@@ -1,38 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity , Image , ImageBackground } from 'react-native';
 import { StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const GameResult = ({ navigation, route }) => { 
-
   const { winner, resetBoard } = route.params;
 
-    const onRestart = () => {
-      resetBoard();
-      navigation.navigate('GameBoard');
-    };
-    
-    const winImage = require('../images/winnericon.png');
-    const tieImage = require('../images/drawicon.png');
+  useEffect(() => {
+    storeGameResult(winner);
+  }, [winner]);
+  
+  const storeGameResult = async (winner) => {
+    try {
+      await AsyncStorage.setItem('recentGame', JSON.stringify({ winner }));
+    } catch (error) {
+      console.error('Error storing game result:', error);
+    }
+  };
+
+  const onRestart = () => {
+    resetBoard();
+    navigation.navigate('GameBoard');
+  };
+  
+  const winImage = require('../images/winnericon.png');
+  const tieImage = require('../images/drawicon.png');
 
   return (
     <View style={ styles.gameResult} >
       <ImageBackground source={require('../images/background.png')} resizeMode='cover' style={styles.backgroundImage}>
-      <Image source={winner === 'X' || winner ==='O' ? winImage : tieImage} style={ styles.image} />
-      <Text style={ styles.winTxt }>
-        {winner === 'X' || winner ==='O' ? `Player's ${winner} Wins ` : 'It\'s a tie!' }
-      </Text>
-      <TouchableOpacity style={ styles.plyAgainBtn} onPress={onRestart}>
-        <Text style={ styles.againBtnTxt}>Play Again</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={ styles.menuBtn} onPress={() => navigation.navigate('AppMenu')}>
-        <Text style={ styles.menuTxt}>Menu</Text>
-      </TouchableOpacity>
+        <Image source={winner === 'X' || winner ==='O' ? winImage : tieImage} style={ styles.image} />
+        <Text style={ styles.winTxt }>
+          {winner === 'X' || winner ==='O' ? `Player's ${winner} Wins ` : 'It\'s a tie!' }
+        </Text>
+        <TouchableOpacity style={ styles.plyAgainBtn} onPress={onRestart}>
+          <Text style={ styles.againBtnTxt}>Play Again</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={ styles.menuBtn} onPress={() => navigation.navigate('AppMenu')}>
+          <Text style={ styles.menuTxt}>Menu</Text>
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
 };
 
 export default GameResult;
+
 
 const styles = StyleSheet.create({ 
 
@@ -66,13 +79,12 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-ExtraBold",
     color: "#f7b731",
     textAlign: "center",
-    display: "flex",
-    width: 299,
-    height: 133,
+    marginBottom: 20,
   },
+  
   plyAgainBtn: {
     position: 'absolute',
-    top: 500,
+    top: 600,
     left: 20,
     justifyContent: 'center',
     borderRadius: 50,
@@ -80,21 +92,18 @@ const styles = StyleSheet.create({
     width: 135,
     height: 41,
   },
+  
   againBtnTxt: {
     fontSize: 15,
     fontWeight: "700",
     fontFamily: "Jura-Bold",
     color: "#003190",
     textAlign: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    width: 80,
-    height: 28,
   },
+  
   menuBtn: {
-
     position: 'absolute',
-    top: 500,
+    top: 600,
     right: 20,
     justifyContent: 'center',
     borderRadius: 50,
