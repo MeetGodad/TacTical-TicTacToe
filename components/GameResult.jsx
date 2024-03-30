@@ -19,7 +19,6 @@ const GameResult = ({ navigation, route }) => {
   };
 
   const onRestart = () => {
-    resetBoard();
     navigation.navigate('GameBoard');
   };
   
