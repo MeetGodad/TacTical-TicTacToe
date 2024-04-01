@@ -16,9 +16,10 @@ const GameResult = ({ navigation, route }) => {
     } catch (error) {
       console.error('Error storing game result:', error);
     }
-  };
+  };  
 
   const onRestart = () => {
+    resetBoard();
     navigation.navigate('GameBoard');
   };
   
@@ -28,9 +29,9 @@ const GameResult = ({ navigation, route }) => {
   return (
     <View style={ styles.gameResult} >
       <ImageBackground source={require('../images/background.png')} resizeMode='cover' style={styles.backgroundImage}>
-        <Image source={winner === 'X' || winner ==='O' ? winImage : tieImage} style={ styles.image} />
+        <Image source={winner !== 'Tie' ? winImage : tieImage} style={ styles.image} />
         <Text style={ styles.winTxt }>
-          {winner === 'X' || winner ==='O' ? `Player's ${winner} Wins ` : 'It\'s a tie!' }
+          {winner !== 'Tie' ? ` ${winner} Wins the Game  ` : 'It\'s a tie!' }
         </Text>
         <TouchableOpacity style={ styles.plyAgainBtn} onPress={onRestart}>
           <Text style={ styles.againBtnTxt}>Play Again</Text>

@@ -33,7 +33,7 @@ const GameHistory = ({ navigation }) => {
       <View style={styles.container}>
         {recentGame ? (
           <TouchableOpacity onPress={handleRecentGamePress} style={styles.button}>
-            <Text style={styles.buttonText}>View Recent Game: {recentGame.winner}</Text>
+            <Text style={styles.buttonText}>Last Game Winner : {recentGame.winner}</Text>
           </TouchableOpacity>
         ) : (
           <Text style={styles.text}>No history available.</Text>

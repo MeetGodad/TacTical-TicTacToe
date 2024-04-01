@@ -56,15 +56,23 @@ const GameBoard = () => {
 
       const gameWinner = checkWinner(newBoard);
       if (gameWinner) {
-        setWinner(gameWinner);
-        navigation.navigate('GameResult', { winner: gameWinner, resetBoard }); // Pass the winner to GameResult
+        let  winnerName;
+        if (gameWinner === 'X') {
+          winnerName = player2Name;
+          setWinner(player2Name);
+        }
+        else if (gameWinner === 'O') {
+          winnerName = player1Name;
+          setWinner(player1Name);
+        }
+        navigation.navigate('GameResult', { winner: winnerName, resetBoard }); // Pass the winner to GameResult
         return; // Return early after navigation
       }
 
       const tie = !newBoard.includes(null);
       if (tie) {
         setWinner('Tie');
-        navigation.navigate('GameResult', { winner: tie, resetBoard }); // Pass 'Tie' as winner to GameResult
+        navigation.navigate('GameResult', { winner: 'Tie', resetBoard }); // Pass 'Tie' as winner to GameResult
         return; // Return early after navigation
       }
     }
