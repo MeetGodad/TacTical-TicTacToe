@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ImageBackground } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -26,75 +26,155 @@ const SignupPage = ({ navigation }) => {
     } catch (error) {
       console.error('Error signing up:', error);
     }
+
+    setName('');
+    setEmail('');
+    setPassword('');
+
   };
 
   return (
-    <ImageBackground source={require('../images/background.png')} style={styles.background}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Signup Page</Text>
-        <Input
-          placeholder="Name"
-          value={name}
-          onChangeText={setName}
-          inputStyle={styles.input}
-        />
-        <Input
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          inputStyle={styles.input}
-        />
-        <Input
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          inputStyle={styles.input}
-        />
-        <Button title="Sign Up" onPress={handleSignup} buttonStyle={styles.button} />
-        <Button
-          title="Already have an account? Log in"
+    <View style={styles.signUp} >
+      <ImageBackground source={require('../images/background.png')} style={styles.background}>
+      <Image source={require('../images/Group3.png')} style={ styles.nameLogo}/>
+      <Text style={styles.SignUp}>
+        <Text style={styles.logInTxtContainer}>
+          <Text style={styles.sign}>{`Sign`}</Text>
+          <Text style={styles.up}>Up</Text>
+        </Text>
+      </Text>
+        <View style={styles.inputContainer}>
+          <Input
+            placeholder="Name"
+            value={name}
+            onChangeText={setName}
+            inputStyle={styles.Input}
+          />
+          <Input
+            placeholder="Email address"
+            value={email}
+            onChangeText={setEmail}
+            inputStyle={styles.Input}
+          />
+          <Input
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            inputStyle={styles.Input}
+          />
+        </View>
+        <TouchableOpacity style={styles.signUpButton} onPress={handleSignup} type="clear">
+          <Text style={styles.signUpText}>Sign Up</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.loginButton}
           onPress={() => navigation.navigate('LoginPage')}
-          type="clear"
-          titleStyle={styles.loginLink}
-        />
-      </View>
-    </ImageBackground>
+          type="clear">
+          <Text style={styles.loginText}>
+            Already have an account? Log in
+          </Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-
-  background: {
+  signUp: {
     flex: 1,
+    backgroundColor: '#001848',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  backgroundImage: {
     resizeMode: 'cover',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    width: '80%',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    color: '#000',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    color: '#000',
-  },
-  button: {
-    backgroundColor: '#f7b731',
-    borderRadius: 10,
-    marginTop: 10,
     width: '100%',
-    alignSelf: 'center', // Align the button itself to the center
+    height: '100%',
   },
-  loginLink: {
-    color: '#000',
-    textDecorationLine: 'underline',
+  inputContainer: {
+    marginTop: 200,
+    left: 20,
+    right: 20,
+    width: 370,
+    height: 58,
+  },
+  Input: {
+    top: 10,
+    left:-5,
+    right:-5,
+    borderRadius: 50,
+    backgroundColor: "darkblue",
+    color: "#fff",
+    fontSize: 25,
+    fontWeight: "700",
+    fontFamily: "Jura-Bold",
+    justifyContent: "center",
+    display:"flex",
+  },
+  signUpButton: {
+    marginTop:200,
+    left: 30,
+    right: 15,
+    width: 332,
+    height: 58,
+    borderRadius: 50,
+    backgroundColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  signUpText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    fontFamily: "Jura-Bold",
+    color: "#FFF"
+  },
+  loginButton: {
     marginTop: 20,
+    width: 332,
+    height: 58,
+    left: 30,
+    right: 15,
+    borderRadius: 50,
+    backgroundColor: "transparent",
+    borderWidth: 1,
+    borderColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loginText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    fontFamily: "Jura-Bold",
+    color: "#FFF",
+    height:60,
+    textAlign: "center",
+  },
+  up: {
+    color: "#0086f4",
+  },
+  sign: {
+    color: "#e94141",
+  },
+  SignUp: {
+    marginBottom:-350,
+    left: 15,
+    fontSize: 35,
+    fontWeight: "700",
+    fontFamily: "Inter-Bold",
+    width: 154,
+    height: 200,
+    textAlign: "center",
+    fontStyle: "italic",
+    alignItems: "center",
+    display: "flex",
+  },
+  nameLogo: {
+    width: 300,
+    height: 200,
+    alignSelf: 'center',
+    marginTop: 0,
   },
 });
 

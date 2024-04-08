@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { View, Text, StyleSheet, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import { Input, Button, Image } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginPage = ({ navigation }) => {
@@ -21,81 +21,125 @@ const LoginPage = ({ navigation }) => {
   
       // Navigate to the next screen upon successful login
       navigation.navigate('AppMenu');
+
+      setEmail('');
+      setPassword('');
+
     } catch (error) {
       console.error('Error logging in:', error);
     }
+
+
   };
 
   return (
-    <ImageBackground source={require('../images/background.png')} style={styles.backgroundImage}>
-      <View style={styles.container}> 
-        <Text style={styles.title}>Login Page</Text>
-        <Input
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          
-          containerStyle={styles.input}
-          inputContainerStyle={styles.inputContainer}
-          inputStyle={styles.inputText}
-        />
-        <Input
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          containerStyle={styles.input}
-          inputContainerStyle={styles.inputContainer}
-          inputStyle={styles.inputText}
-        />
-        <Button
-          title="Log In"
-          onPress={handleLogin}
-          buttonStyle={styles.button}
-          titleStyle={styles.buttonText}
-        />
-      </View>
-    </ImageBackground>
+    <View style={ styles.loginPage}>
+      <ImageBackground source={require('../images/background.png')} style={styles.backgroundImage}>
+      <Image source={require('../images/Group3.png')} style={ styles.nameLogo} />
+      <Text style={styles.logIn}>
+        <Text style={styles.logInTxtContainer}>
+          <Text style={styles.log}>{`Log `}</Text>
+          <Text style={styles.in}>In</Text>
+        </Text>
+      </Text>
+      <TextInput
+        style={styles.emailInput}
+        placeholder="Email Address" 
+        placeholderTextColor={'#fff'}
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.passwordInput}
+        placeholder="Password"
+        placeholderTextColor={'#fff'}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      <Button 
+        title="Countinue" 
+        onPress={handleLogin} 
+        buttonStyle={{...styles.button, backgroundColor: 'darkblue', borderRadius: 16}} 
+        titleStyle={{...styles.buttonTitle, color: 'white', fontSize: 16}}
+      />
+      <TouchableOpacity
+          style={styles.signupButton}
+          onPress={() => navigation.navigate('SignupPage')}
+          type="clear">
+          <Text style={styles.signupText}>
+            Do not have an account? Sign Up
+          </Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  loginPage:{
     flex: 1,
-    alignItems: 'center',
+    backgroundColor: '#001848',
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 20,
+  emailInput: {
+    bottom: 110,
+    borderRadius: 50,
+    backgroundColor: 'darkblue',
+    color: '#fff',
+    left: 25,
+    fontSize:25,
+    width: 332,
+    height: 58,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    textAlign: "center",
+    display:"flex",
+    height: 58,
+    justifyContent: "center",
   },
-  input: {
-    width: '80%',
-    marginBottom: 15,
+  passwordInput: {
+    bottom:85,
+    left:30,
+    borderRadius: 50,
+    backgroundColor: "darkblue",
+    color: '#fff',
+    fontSize:25,
+    width: 332,
+    height: 58,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    textAlign: "center",
+    display: "flex",
+    justifyContent: "center", 
   },
-  inputContainer: {
-    borderBottomWidth: 0,
-    borderRadius: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+  logIn: {
+    top: 50,
+    left: 15,
+    fontSize: 35,
+    lineHeight: 30,
+    fontWeight: "700",
+    fontFamily: "Inter-Bold",
+    width: 154,
+    height: 200,
+    textAlign: "center",
+    fontStyle: "italic",
+    alignItems: "center",
+    display: "flex",
   },
-  inputText: {
-    color: '#000', // Black color for text
+  in: {
+    color: "#0086f4",
   },
-  button: {
-    width: '80%',
-    backgroundColor: '#f7b731',
-    borderRadius: 10,
-    textAlign: 'center',
+  log: {
+    color: "#e94141",
   },
-  buttonText: {
-    color: '#000',
-    textAlign: 'center',
-  },
-  signupText: {
-    color: '#000',
-    marginTop: 20,
+  nameLogo: {
+    width: 300,
+    height: 200,
+    alignSelf: 'center',
+    marginTop: 50,
+    left:40,
   },
   backgroundImage: {
     flex: 1,
@@ -103,6 +147,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: '100%',
+  },
+  button:{
+    margintop:-100,
+    left: 30,
+    right: 15,
+    width: 332,
+    height: 58,
+    borderRadius: 50,
+    backgroundColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonTitle:{
+    fontSize: 25,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    color: "#FFF",
+    textAlign: "center",
+  },
+  signupButton: {
+    marginTop:10,
+    width: 332,
+    height: 58,
+    left: 30,
+    right: 15,
+    borderRadius: 50,
+    backgroundColor: "transparent",
+    borderWidth: 1,
+    borderColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  signupText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    fontFamily: "Jura-Bold",
+    color: "#FFF",
+    height:60,
+    textAlign: "center",
   },
 });
 

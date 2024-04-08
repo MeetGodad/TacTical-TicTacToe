@@ -38,18 +38,23 @@ export default function Settings({ navigation }) {
   return (
     <ImageBackground source={require('../images/background.png')} style={styles.backgroundImage}>
       <View style={styles.container}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.set}>
+          <Text style={styles.setTxtContainer}>
+            <Text style={styles.sett}>{`Sett`}</Text>
+            <Text style={styles.ings}>ings</Text>
+          </Text>
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="Player 1 Name"
-          placeholderTextColor="#000" // Text color
+          placeholderTextColor="#fff" // Text color
           value={player1Name}
           onChangeText={setPlayer1Name}
         />
         <TextInput
-          style={styles.input}
+          style={styles.inputi}
           placeholder="Player 2 Name"
-          placeholderTextColor="#000" // Text color
+          placeholderTextColor="#fff" // Text color
           value={player2Name}
           onChangeText={setPlayer2Name}
         />
@@ -85,9 +90,10 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     backgroundColor: '#f7b731',
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 5,
+    marginTop:20,
   },
   saveButtonText: {
     color: '#003190',
@@ -100,5 +106,57 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: '100%',
+    backgroundColor: '#001848',
+  },
+  set: {
+    top: 50,
+    left: 15,
+    fontSize: 40,
+    lineHeight: 40,
+    fontWeight: "700",
+    fontFamily: "Inter-Bold",
+    width: 175,
+    height: 175,
+    textAlign: "center",
+    fontStyle: "italic",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+  },
+  sett: {
+    color: "#0086f4",
+  },
+  ings: {
+    color: "#e94141",
+  },
+  input: {
+    borderRadius: 50,
+    backgroundColor: 'darkblue',
+    color: '#fff',
+    fontSize:25,
+    width: 300,
+    height: 58,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    textAlign: "center",
+    display:"flex",
+    height: 58,
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  inputi: {
+    borderRadius: 50,
+    backgroundColor: 'darkblue',
+    color: '#fff',
+    fontSize:25,
+    width: 300,
+    height: 58,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    textAlign: "center",
+    display:"flex",
+    height: 58,
+    justifyContent: "center",
+    marginTop: 20,
   },
 });

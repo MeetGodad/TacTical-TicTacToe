@@ -4,5 +4,6 @@
         "gamelogo",
         "Signup",
         "winnericon"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }

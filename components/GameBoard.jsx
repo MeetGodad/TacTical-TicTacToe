@@ -13,7 +13,6 @@ const GameBoard = () => {
   const [winner, setWinner] = useState("NO WINNER YET");
   const [cellStates, setCellStates] = useState(Array(9).fill(false));
   const navigation = useNavigation();
-
   const [player1Name, setPlayer1Name] = useState('Player 1');
   const [player2Name, setPlayer2Name] = useState('Player 2');
 
@@ -64,15 +63,11 @@ const GameBoard = () => {
         else if (gameWinner === 'O') {
           winnerName = player1Name;
           setWinner(player1Name);
+        }else if (gameWinner === 'Tie') {
+          winnerName = 'Tie';
+          setWinner('Tie'); 
         }
         navigation.navigate('GameResult', { winner: winnerName, resetBoard }); // Pass the winner to GameResult
-        return; // Return early after navigation
-      }
-
-      const tie = !newBoard.includes(null);
-      if (tie) {
-        setWinner('Tie');
-        navigation.navigate('GameResult', { winner: 'Tie', resetBoard }); // Pass 'Tie' as winner to GameResult
         return; // Return early after navigation
       }
     }
@@ -85,7 +80,6 @@ const GameBoard = () => {
         return board[i];
       }
     }
-
     // Check columns
     for (let i = 0; i <= 2; i++) {
       if (board[i] !== null && board[i] === board[i + 3] && board[i] === board[i + 6]) {
