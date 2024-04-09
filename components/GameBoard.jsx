@@ -67,7 +67,8 @@ const GameBoard = () => {
           winnerName = 'Tie';
           setWinner('Tie'); 
         }
-        navigation.navigate('GameResult', { winner: winnerName, resetBoard }); // Pass the winner to GameResult
+        resetBoard ();
+        navigation.navigate('GameResult', { winner: winnerName}); // Pass the winner to GameResult
         return; // Return early after navigation
       }
     }

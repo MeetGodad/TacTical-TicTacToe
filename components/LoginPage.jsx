@@ -60,8 +60,8 @@ const LoginPage = ({ navigation }) => {
       <Button 
         title="Countinue" 
         onPress={handleLogin} 
-        buttonStyle={{...styles.button, backgroundColor: 'darkblue', borderRadius: 16}} 
-        titleStyle={{...styles.buttonTitle, color: 'white', fontSize: 16}}
+        buttonStyle={styles.continueBtn} 
+        titleStyle={styles.continueBtnTitle}
       />
       <TouchableOpacity
           style={styles.signupButton}
@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   button:{
-    margintop:-100,
     left: 30,
     right: 15,
     width: 332,
@@ -159,6 +158,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  continueBtn:{
+    left: 30,
+    right: 15,
+    width: 332,
+    height: 58,
+    borderRadius: 16,
+    backgroundColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+    
+  },
+
   buttonTitle:{
     fontSize: 25,
     fontWeight: "700",
@@ -166,6 +178,15 @@ const styles = StyleSheet.create({
     color: "#FFF",
     textAlign: "center",
   },
+
+  continueBtnTitle:{
+    fontSize: 25,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    color: "#FFF",
+    textAlign: "center",
+  },
+
   signupButton: {
     marginTop:10,
     width: 332,

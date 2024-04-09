@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const GameResult = ({ navigation, route }) => { 
-  const { winner, resetBoard } = route.params;
+  const { winner } = route.params;
 
   useEffect(() => {
     storeGameResult(winner);
@@ -19,7 +19,6 @@ const GameResult = ({ navigation, route }) => {
   };  
 
   const onRestart = () => {
-    resetBoard();
     navigation.navigate('GameBoard');
   };
   
