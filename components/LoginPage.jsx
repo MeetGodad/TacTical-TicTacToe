@@ -60,6 +60,7 @@ const LoginPage = ({ navigation }) => {
       <TouchableOpacity style={{...styles.button,backgroundColor: 'darkblue', borderRadius: 16}} onPress={handleLogin} type="clear">
         <Text style={{...styles.buttonTitle, color: 'white', fontSize: 20}}>Countinue</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
           style={styles.signupButton}
           onPress={() => navigation.navigate('SignupPage')}
