@@ -57,17 +57,14 @@ const LoginPage = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button 
-        title="Countinue" 
-        onPress={handleLogin} 
-        buttonStyle={{...styles.button, backgroundColor: 'darkblue', borderRadius: 16}} 
-        titleStyle={{...styles.buttonTitle, color: 'white', fontSize: 16}}
-      />
+      <TouchableOpacity style={{...styles.button,backgroundColor: 'darkblue', borderRadius: 16}} onPress={handleLogin} type="clear">
+        <Text style={{...styles.buttonTitle, color: 'white', fontSize: 20}}>Countinue</Text>
+      </TouchableOpacity>
       <TouchableOpacity
           style={styles.signupButton}
           onPress={() => navigation.navigate('SignupPage')}
           type="clear">
-          <Text style={styles.signupText}>
+          <Text style={{...styles.signupText, color:'red'}}>
             Do not have an account? Sign Up
           </Text>
         </TouchableOpacity>
@@ -83,8 +80,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  button:{
+    bottom:50,
+    width: 300,
+    left: 45,
+    height: 58,
+    borderRadius: 50,
+    backgroundColor: "darkblue",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonTitle:{
+    fontSize: 25,
+    fontWeight: "700",
+    fontFamily: "Bold",
+    color: "#FFF",
+    textAlign: "center",
+  },
   emailInput: {
-    bottom: 110,
+    top: -100,
     borderRadius: 50,
     backgroundColor: 'darkblue',
     color: '#fff',
@@ -100,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   passwordInput: {
-    bottom:85,
+    top: -80,
     left:30,
     borderRadius: 50,
     backgroundColor: "darkblue",
@@ -148,26 +162,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  button:{
-    margintop:-100,
-    left: 30,
-    right: 15,
-    width: 332,
-    height: 58,
-    borderRadius: 50,
-    backgroundColor: "darkblue",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonTitle:{
-    fontSize: 25,
-    fontWeight: "700",
-    fontFamily: "Bold",
-    color: "#FFF",
-    textAlign: "center",
-  },
   signupButton: {
     marginTop:10,
+    bottom: 45,
     width: 332,
     height: 58,
     left: 30,
@@ -180,11 +177,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   signupText: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     fontFamily: "Jura-Bold",
     color: "#FFF",
-    height:60,
     textAlign: "center",
   },
 });

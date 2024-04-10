@@ -84,12 +84,18 @@ const styles = StyleSheet.create({
   signUp: {
     flex: 1,
     backgroundColor: '#001848',
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   backgroundImage: {
+    flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  background:{
+    flex: 1,
     width: '100%',
     height: '100%',
   },
