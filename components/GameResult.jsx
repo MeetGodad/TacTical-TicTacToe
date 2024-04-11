@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity , Image , ImageBackground } from 'react-native';
-import { StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image, ImageBackground, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const GameResult = ({ navigation, route }) => { 
-  const { winner, resetBoard } = route.params;
+const GameResult = ({ navigation, route }) => {
+  const { winner } = route.params;
 
   useEffect(() => {
     storeGameResult(winner);
   }, [winner]);
-  
+
   const storeGameResult = async (winner) => {
     try {
       await AsyncStorage.setItem('recentGame', JSON.stringify({ winner }));
     } catch (error) {
       console.error('Error storing game result:', error);
     }
-  };  
+  };
 
   const onRestart = () => {
-    resetBoard();
     navigation.navigate('GameBoard');
   };
-  
+
   const winImage = require('../images/winnericon.png');
   const tieImage = require('../images/drawicon.png');
 
@@ -43,8 +41,6 @@ const GameResult = ({ navigation, route }) => {
     </View>
   );
 };
-
-export default GameResult;
 
 
 const styles = StyleSheet.create({ 
@@ -124,3 +120,5 @@ const styles = StyleSheet.create({
   }
 
 });
+
+export default GameResult;

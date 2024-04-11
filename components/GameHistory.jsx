@@ -21,10 +21,8 @@ const GameHistory = ({ navigation }) => {
   };
 
   const handleRecentGamePress = () => {
-    // Navigate to the GameResult screen with the recent game data
     navigation.navigate('GameResult', {
-      winner: recentGame.winner,
-      // Pass other necessary data here if needed
+      winner: recentGame?.winner || 'No Winner', 
     });
   };
 
@@ -70,14 +68,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#001848',
+    backgroundColor: '#f7b731',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   buttonText: {
     fontSize: 27.5,
-    color: '#ffffff',
+    color: '#003190',
     fontWeight: 'bold',
 
   },
