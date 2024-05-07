@@ -1,3 +1,6 @@
+Tactical Tic Tac Toe Mobile App
+This is a React Native mobile application for a game of Tic Tac Toe with a tactical twist. The game is built for both Android and iOS platforms.
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
